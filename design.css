@@ -13,6 +13,7 @@ body{
 
 .tittle{
     margin-top: 40px;
+    text-align: center;
 }
 
 .tittle h1{
@@ -20,7 +21,7 @@ body{
     font-weight: 700;
     line-height: 65.63px;
     color: #75B79E;
-    text-align: center;
+
 }
 
 .jogo{
@@ -71,4 +72,22 @@ body{
     display: none;
 }
 
+@media (max-width: 950px){
+ 
+    .jogo{
+        width: 100%;
+    }
+    
+}
+
+
+@media (max-width: 640px){
+
+.jogo{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+}
 
