@@ -23,26 +23,28 @@ let jogo = document.querySelector('.jogo');
 
 
 function selecao_cartas(){
-    nCartas = Number(prompt("Com quantas cartas deseja jogar"));
+    nCartas = Number(prompt("Com quantas cartas deseja jogar?"));
     finalizador = nCartas/2;
 
     if ((nCartas%2) === 0 && nCartas > 3 && nCartas < 15 ){
-        alert(comparador = true);
+        comparador = true;
     }
     else{
-        alert(comparador = false);
+        alert('Selecione um número par entre 4 e 14.');
+        comparador = false;
     }
 
     while(comparador === false){
         nCartas = Number(prompt("Com quantas cartas deseja jogar"));
 
         if ((nCartas%2) === 0 && nCartas > 3 && nCartas < 15 ){
-            alert(comparador = true);
+            comparador = true;
         }
         else{
-            alert(comparador = false);
+            alert('Selecione um número par entre 4 e 14.');
+            comparador = false;
         }
-        alert(comparador);
+    
     }
 }
 
@@ -93,7 +95,6 @@ function desativacarta(){
 
 function viracarta(cartaclicada){
     lockcardfirst = cartaclicada.innerHTML;
-    contadorjogadas++;
     lockcardfirst1 = cartaclicada.querySelector('img').classList.contains('hidden');
     if (lockcard === true) {return false};
     if (lockcardfirst === `<img class="back" src="/imagens/${a}">`) {return false};
@@ -101,6 +102,8 @@ function viracarta(cartaclicada){
     cartaclicada.classList.add('vira');
     cartaclicada.querySelector('.back').classList.remove('hidden');
     cartaclicada.querySelector('.front').classList.add('hidden');
+
+    contadorjogadas++;
 
     if(firstcard === undefined){
         firstcard = cartaclicada;
@@ -159,8 +162,9 @@ function check(){
 
 function finalizajogo(){
     if (finalizador === 0){
-        alert(`Você ganhou o jogo em ${contadorjogadas} jogadas`);
+        alert(`Você ganhou o jogo em ${contadorjogadas} jogadas!`);
         repetirjogo = prompt("Você deseja continuar (sim ou não)");
+
 
         if(repetirjogo === "sim"){
             jogo.innerHTML = "";
@@ -168,8 +172,11 @@ function finalizajogo(){
             finalizador = 0;
             loadgame();
         }
-        else{
+        else if (repetirjogo === "não"){
             alert('O JOGO ACABOU')
+        }
+        else{
+            alert('Resposta inválida, atualize a página para continuar.')
         }
     }
 }
